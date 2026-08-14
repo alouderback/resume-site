@@ -44,6 +44,7 @@ import { withBase } from '../lib/paths';
                 class="cover"
                 style={`--c1:${item.palette[0]};--c2:${item.palette[1]}`}
                 data-has-image={item.cover ? 'true' : 'false'}
+                data-fit={item.fit ?? 'cover'}
               >
                 {item.cover ? (
                   <img
@@ -157,7 +158,7 @@ import { withBase } from '../lib/paths';
     scrollbar-width: thin;
   }
   .track:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--brand);
     outline-offset: 4px;
   }
   .item {
@@ -189,6 +190,11 @@ import { withBase } from '../lib/paths';
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  /* Square box art is letterboxed against the palette rather than cropped. */
+  .cover[data-fit='contain'] img {
+    object-fit: contain;
+    padding: 6%;
   }
 
   .fallback {

@@ -8,10 +8,19 @@ on:
     branches: [dev, qa, main]
   workflow_dispatch:
 
-# Serialised rather than cancelled: two publishes must not race for the branch,
-# and cancelling one halfway would leave gh-pages half written.
+# Serialised per environment, not globally.
+#
+# A single shared group looks safer but silently drops deploys: with
+# cancel-in-progress false, GitHub only ever queues one pending run per group
+# and cancels any earlier pending one. Pushing dev, qa, and main together meant
+# main deployed while qa and dev were cancelled outright.
+#
+# Each environment now queues only against itself, which is the race that
+# actually matters. Two environments publishing at once is handled where it
+# belongs, in the rebase-and-retry loop in scripts/publish-env.sh, since they
+# write to disjoint paths on gh-pages.
 concurrency:
-  group: publish-gh-pages
+  group: publish-${{ github.ref_name }}
   cancel-in-progress: false
 
 permissions:
