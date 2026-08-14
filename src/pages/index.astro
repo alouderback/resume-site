@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CoverCarousel from '../components/CoverCarousel.astro';
-import { profile } from '../data/profile';
+import { profile, eagles } from '../data/profile';
 import { pillars } from '../data/values';
 import { skillGroups } from '../data/skills';
 import { withBase } from '../lib/paths';
@@ -11,15 +11,77 @@ import { ENV } from '../lib/env';
 
 <BaseLayout title="Salesforce DevOps Engineer" description={profile.summary}>
   <section class="hero wrap">
-    <span class="eyebrow">{profile.role} · {profile.company}</span>
-    <h1>{profile.name}</h1>
-    <p class="tagline">{profile.headline}</p>
-    <p class="lede">{profile.summary}</p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">{profile.role} · {profile.company} · {profile.location}</span>
+        <h1 class="display">{profile.name}</h1>
+        <p class="tagline">{profile.headline}</p>
+        <p class="lede">{profile.summary}</p>
 
-    <div class="cta">
-      <a class="btn btn--primary" href={withBase('/experience/')}>See the work</a>
-      <a class="btn" href={withBase('/pipeline/')}>How this site ships</a>
-      <a class="btn" href={withBase(profile.resumePdf)}>Resume (PDF)</a>
+        <div class="cta">
+          <a class="btn btn--primary" href={withBase('/experience/')}>See the work</a>
+          <a class="btn" href={withBase('/pipeline/')}>How this site ships</a>
+          <a class="btn" href={withBase(profile.resumePdf)}>Resume (PDF)</a>
+          <span class="cta-social">
+            <a class="btn" href={profile.github} rel="me noopener">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                ></path>
+              </svg>
+              GitHub
+            </a>
+            <a class="btn" href={profile.linkedin} rel="me noopener">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3.6 5.5H.9V15h2.7V5.5ZM2.25 1a1.57 1.57 0 1 0 0 3.14 1.57 1.57 0 0 0 0-3.14ZM15.1 9.4c0-2.6-1.39-3.81-3.24-3.81-1.5 0-2.17.82-2.54 1.4V5.5H6.62c.04.76 0 9.5 0 9.5h2.7V9.7c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.96 0 1.35.73 1.35 1.81V15h2.7V9.4Z"
+                ></path>
+              </svg>
+              LinkedIn
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img
+          src={withBase(profile.photo.src)}
+          alt={profile.photo.alt}
+          width="1050"
+          height="1400"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>{profile.photo.caption}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="eagles">
+      <div class="eagles-head">
+        <span class="wing" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M2 8c4.5-.4 7.6 1 9.6 3.2C13.4 13.2 14 15.6 14 18c2.6-1.4 4.4-3.5 5.3-5.6.9-2.1 1-4.2.7-5.9-1.5 1.6-3 2.2-4.4 2.2 1-1.3 1.4-2.6 1.3-3.8-2 1.3-4 1.6-6 1.3C8.2 5.7 5.6 6.3 2 8Z"
+            ></path>
+          </svg>
+        </span>
+        <h2 class="display">{eagles.title}</h2>
+      </div>
+      {eagles.lines.map((line) => <p>{line}</p>)}
     </div>
   </section>
 
@@ -107,12 +169,85 @@ import { ENV } from '../lib/env';
 
 <style>
   .hero {
-    padding-block: clamp(3rem, 9vw, 6rem) clamp(2rem, 5vw, 3rem);
+    padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3rem);
   }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 1.4rem + 4.6vw, 4.6rem);
+  }
+
+  .hero-photo {
+    margin: 0;
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center 22%;
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--brand);
+    box-shadow: var(--shadow);
+  }
+  .hero-photo figcaption {
+    margin-top: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.71rem;
+    line-height: 1.5;
+    color: var(--text-faint);
+  }
+
+  .eagles {
+    border: 1px solid color-mix(in srgb, var(--brand) 40%, var(--border));
+    border-left: 4px solid var(--brand);
+    border-radius: var(--radius-lg);
+    background: var(--brand-soft);
+    padding: 1.6rem 1.8rem;
+  }
+  .eagles-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  .eagles-head h2 {
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1rem);
+  }
+  .wing {
+    color: var(--brand);
+    display: grid;
+    place-items: center;
+  }
+  .eagles p {
+    color: var(--text-muted);
+    max-width: 68ch;
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+  .eagles p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 820px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-photo {
+      order: -1;
+      max-width: 320px;
+    }
+  }
+
   .tagline {
     font-family: var(--font-mono);
     font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
-    color: var(--accent-text);
+    color: var(--brand-text);
     margin: 0.55rem 0 1.2rem;
     letter-spacing: -0.01em;
   }
@@ -125,6 +260,12 @@ import { ENV } from '../lib/env';
     gap: 0.7rem;
     flex-wrap: wrap;
     margin-top: 1.8rem;
+  }
+  /* Keeps GitHub and LinkedIn together when the row wraps, so neither ever
+     ends up stranded alone on a second line. */
+  .cta-social {
+    display: flex;
+    gap: 0.7rem;
   }
 
   .stats {
@@ -140,7 +281,7 @@ import { ENV } from '../lib/env';
     flex-direction: column;
     gap: 0.1rem;
     padding-left: 0.9rem;
-    border-left: 2px solid var(--accent);
+    border-left: 2px solid var(--brand);
   }
   .stats .v {
     font-size: 2rem;
@@ -179,7 +320,7 @@ import { ENV } from '../lib/env';
     align-items: baseline;
   }
   .skill-strip a:hover {
-    border-color: var(--accent);
+    border-color: var(--brand);
     background: var(--surface-raised);
   }
   .sg-name {
@@ -213,12 +354,12 @@ import { ENV } from '../lib/env';
     transition: border-color 0.15s ease;
   }
   .pillar:hover {
-    border-color: var(--accent);
+    border-color: var(--brand);
   }
   .pnum {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: var(--accent-text);
+    color: var(--brand-text);
     letter-spacing: 0.08em;
   }
   .pillar h3 {

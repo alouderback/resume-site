@@ -2,7 +2,7 @@ export interface Interest {
   id: string;
   title: string;
   creator: string;
-  medium: 'Books' | 'Book' | 'Movie' | 'TV' | 'Game';
+  medium: 'Books' | 'Book' | 'Movie' | 'TV' | 'Game' | 'Team';
   year: string;
   note: string;
   url?: string;
@@ -12,7 +12,12 @@ export interface Interest {
    * here is all it takes to swap.
    */
   cover?: string;
-  /** Colour pair for the generated card when there is no cover image. */
+  /**
+   * How the cover fills its 2:3 frame. Use 'contain' for square box art so it
+   * is letterboxed against the palette rather than cropped top and bottom.
+   */
+  fit?: 'cover' | 'contain';
+  /** Colour pair for the generated card, and the backdrop behind a contained cover. */
   palette: [string, string];
 }
 
@@ -36,6 +41,7 @@ export const interests: Interest[] = [
     year: '2026',
     note: 'Nolan doing Homer, shot entirely on IMAX 70mm. Matt Damon as Odysseus.',
     url: 'https://en.wikipedia.org/wiki/The_Odyssey_(2026_film)',
+    cover: 'the-odyssey.jpg',
     palette: ['#0ea5e9', '#0c4a6e'],
   },
   {
@@ -56,6 +62,8 @@ export const interests: Interest[] = [
     year: '2026',
     note: 'Single-player Splatoon for Switch 2. You play a mechanic working with Deep Cut across the Spirhalite Islands.',
     url: 'https://en.wikipedia.org/wiki/Splatoon_Raiders',
+    cover: 'splatoon-raiders.jpg',
+    fit: 'contain',
     palette: ['#ec4899', '#4c1d95'],
   },
   {
@@ -66,6 +74,17 @@ export const interests: Interest[] = [
     year: '2024 to now',
     note: 'Season two took the wasteland to New Vegas. One of the few game adaptations that understands the source material.',
     url: 'https://en.wikipedia.org/wiki/Fallout_season_2',
+    cover: 'fallout.jpg',
     palette: ['#84cc16', '#14532d'],
+  },
+  {
+    id: 'philadelphia-eagles',
+    title: 'Philadelphia Eagles',
+    creator: 'Sundays, September to January',
+    medium: 'Team',
+    year: 'Always',
+    note: 'The one non-negotiable in my calendar. Kelly green throwbacks are the correct uniform, and this site is painted to match.',
+    url: 'https://www.philadelphiaeagles.com/',
+    palette: ['#2b8c4e', '#08351c'],
   },
 ];

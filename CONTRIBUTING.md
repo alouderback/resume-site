@@ -48,6 +48,12 @@ through components.
 **Resume content goes in `src/data/`.** Typed modules, one per area. Pages render
 from data so nothing drifts between environments.
 
+**Use the right colour token.** `--brand` (Eagles kelly green) is the site
+identity and looks the same everywhere. `--accent` is the deployment environment
+and belongs only on environment chrome: the banner, org switcher, build panel,
+and the Sandbox-only Lab block. Using `--accent` for ordinary UI would repaint
+Production in Sandbox violet and destroy the environment signal.
+
 **Adding something to Things I'm Into** is one entry in `src/data/interests.ts`.
 Drop a cover image into `public/covers/` and reference it with the `cover` field,
 or leave `cover` out and the carousel renders a generated typographic card in the
