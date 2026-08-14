@@ -28,7 +28,7 @@ export const interests: Interest[] = [
     creator: 'Matt Dinniman',
     medium: 'Books',
     year: '2020 to now',
-    note: 'The whole series. Earth gets demolished into a game show dungeon and the run is broadcast live. Eight books out, the ninth is the last one.',
+    note: 'The whole series. Earth gets demolished into a game show dungeon and the run is broadcast live.',
     url: 'https://en.wikipedia.org/wiki/Dungeon_Crawler_Carl',
     cover: 'dungeon-crawler-carl.jpg',
     palette: ['#f97316', '#7c2d12'],
@@ -80,11 +80,13 @@ export const interests: Interest[] = [
   {
     id: 'philadelphia-eagles',
     title: 'Philadelphia Eagles',
-    creator: 'Sundays, September to January',
+    creator: 'Sundays, September to February',
     medium: 'Team',
     year: 'Always',
     note: 'The one non-negotiable in my calendar. Kelly green throwbacks are the correct uniform, and this site is painted to match.',
     url: 'https://www.philadelphiaeagles.com/',
+    cover: 'eagles-logo.png',
+    fit: 'contain',
     palette: ['#2b8c4e', '#08351c'],
   },
 ];

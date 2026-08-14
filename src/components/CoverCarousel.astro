@@ -198,6 +198,7 @@ import { withBase } from '../lib/paths';
   }
 
   .fallback {
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -206,6 +207,10 @@ import { withBase } from '../lib/paths';
     padding: 1rem 0.9rem;
     color: #fff;
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  }
+  /* Keep the text above any artwork and readable over it. */
+  .fallback > span {
+    position: relative;
   }
   .fb-medium {
     font-family: var(--font-mono);
