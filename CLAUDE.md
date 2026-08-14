@@ -23,6 +23,15 @@ derive from it.
 **Environment differences live in `src/lib/flags.ts`.** Add a flag to the matrix
 rather than writing `ENV.key === 'dev'` inline.
 
+**Two colour roles, and they are not interchangeable.** `--brand` is Eagles
+kelly green and is the site's identity: links, buttons, focus rings, list
+markers, anything that should look the same in every environment. `--accent` is
+the deployment environment (Sandbox violet, Test amber, Production kelly green)
+and belongs only on environment chrome: the environment banner, the org
+switcher, the build panel, the "you are here" row, and the Sandbox-only Lab
+block. Reaching for `--accent` on ordinary UI makes Production look like a
+Sandbox, and makes the environment signal meaningless.
+
 **Resume content lives in `src/data/`** as typed modules. Pages render from data.
 
 ## Writing voice

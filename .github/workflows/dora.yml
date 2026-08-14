@@ -15,8 +15,10 @@ on:
     types: [completed]
   workflow_dispatch:
 
+# Its own group. The metrics job writes only data/dora.json, so it never
+# conflicts with a deploy on content, and the push retry handles the overlap.
 concurrency:
-  group: publish-gh-pages
+  group: publish-dora
   cancel-in-progress: false
 
 permissions:
