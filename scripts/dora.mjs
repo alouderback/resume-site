@@ -100,12 +100,26 @@ async function collectDeployments(environment) {
   return all;
 }
 
-/** Latest status wins: a deployment can go pending, then in_progress, then success. */
+/** States that actually say how a deployment turned out. */
+const OUTCOME_STATES = new Set(['success', 'failure', 'error']);
+
+/**
+ * The outcome of a deployment, and when it happened.
+ *
+ * Taking the newest status outright gets this wrong. GitHub appends an
+ * `inactive` status to a deployment once a later one supersedes it, so the
+ * status list reads [inactive, success, in_progress] and the newest entry
+ * describes the deployment's *state*, not its *result*. Only success, failure,
+ * and error say how it went, so filter to those and take the newest.
+ */
 async function latestState(deploymentId) {
   const statuses = await gh(`/repos/${REPO}/deployments/${deploymentId}/statuses?per_page=100`);
   if (!statuses || !statuses.length) return null;
-  const sorted = [...statuses].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  return { state: sorted[0].state, at: new Date(sorted[0].created_at).getTime() };
+  const outcomes = statuses
+    .filter((s) => OUTCOME_STATES.has(s.state))
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  if (!outcomes.length) return null; // still pending or in progress
+  return { state: outcomes[0].state, at: new Date(outcomes[0].created_at).getTime() };
 }
 
 async function commitAuthoredAt(sha) {
