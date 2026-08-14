@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T01:41:02.757Z",
+  "generatedAt": "2026-08-14T01:58:51.251Z",
   "windowDays": 90,
   "repo": "alouderback/resume-site",
   "metrics": {
@@ -25,13 +25,13 @@
     }
   },
   "deployments": {
-    "total": 1,
+    "total": 2,
     "successful": 1,
     "failed": 0,
     "byEnvironment": {
-      "dev": 0,
-      "qa": 0,
-      "production": 1
+      "dev": 2,
+      "qa": 1,
+      "production": 2
     }
   }
 }
