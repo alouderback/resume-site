@@ -17,11 +17,6 @@ export interface Interest {
    * is letterboxed against the palette rather than cropped top and bottom.
    */
   fit?: 'cover' | 'contain';
-  /**
-   * Decorative artwork drawn behind a generated card. Original shapes rather
-   * than team marks, so nothing trademarked ends up in the repository.
-   */
-  backdrop?: 'eagles';
   /** Colour pair for the generated card, and the backdrop behind a contained cover. */
   palette: [string, string];
 }
@@ -90,7 +85,8 @@ export const interests: Interest[] = [
     year: 'Always',
     note: 'The one non-negotiable in my calendar. Kelly green throwbacks are the correct uniform, and this site is painted to match.',
     url: 'https://www.philadelphiaeagles.com/',
-    backdrop: 'eagles',
+    cover: 'eagles-logo.png',
+    fit: 'contain',
     palette: ['#2b8c4e', '#08351c'],
   },
 ];
