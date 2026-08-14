@@ -28,7 +28,7 @@ jobs:
       gh_environment: ${{ steps.map.outputs.gh_environment }}
       url: ${{ steps.map.outputs.url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
@@ -75,7 +75,7 @@ jobs:
           ENV_NAME: ${{ needs.resolve.outputs.env_key }}
 
       - name: Check out the published site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: gh-pages
           path: gh-pages
