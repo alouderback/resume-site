@@ -66,7 +66,7 @@ jobs:
           node-version-file: .nvmrc
       # Re-uses the artifacts from the build job rather than rebuilding.
       # Each artifact unpacks to dist/<env>, which is what the checker expects.
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: dist
       - name: Check every internal link and asset reference
