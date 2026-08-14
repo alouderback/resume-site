@@ -28,7 +28,7 @@ export const interests: Interest[] = [
     creator: 'Matt Dinniman',
     medium: 'Books',
     year: '2020 to now',
-    note: 'The whole series. Earth gets demolished into a game show dungeon and the run is broadcast live. Eight books out, the ninth is the last one.',
+    note: 'The whole series. Earth gets demolished into a game show dungeon and the run is broadcast live.',
     url: 'https://en.wikipedia.org/wiki/Dungeon_Crawler_Carl',
     cover: 'dungeon-crawler-carl.jpg',
     palette: ['#f97316', '#7c2d12'],
