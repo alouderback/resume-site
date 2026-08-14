@@ -39,6 +39,6 @@ export const eagles = {
   title: 'Go Birds',
   lines: [
     'I am a Philadelphia Eagles fan in the way that shows up on a calendar. Sundays are blocked out from September to February, the kelly green throwbacks are the correct uniform and I will argue about it, and the face paint goes on before the drive up to the Linc.',
-    'If a deploy window ever lands on a Sunday at one, I am going to ask about moving it.',
+    'Sundays are blocked from deployments because Sundays are for the Birds.',
   ],
 };
