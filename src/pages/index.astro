@@ -70,6 +70,20 @@ import { ENV } from '../lib/env';
   </section>
 
   <section class="section wrap">
+    <ul class="stats">
+      {
+        profile.stats.map((s) => (
+          <li>
+            <span class="v">{s.value}</span>
+            <span class="l">{s.label}</span>
+            <span class="c">{s.context}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section wrap">
     <div class="eagles">
       <div class="eagles-head">
         <span class="wing" aria-hidden="true">
@@ -83,20 +97,6 @@ import { ENV } from '../lib/env';
       </div>
       {eagles.lines.map((line) => <p>{line}</p>)}
     </div>
-  </section>
-
-  <section class="section wrap">
-    <ul class="stats">
-      {
-        profile.stats.map((s) => (
-          <li>
-            <span class="v">{s.value}</span>
-            <span class="l">{s.label}</span>
-            <span class="c">{s.context}</span>
-          </li>
-        ))
-      }
-    </ul>
   </section>
 
   <section class="section wrap">
