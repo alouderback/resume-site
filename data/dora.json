@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-08-26T07:09:59.904Z",
+  "windowDays": 90,
+  "repo": "alouderback/resume-site",
+  "metrics": {
+    "deploymentFrequency": {
+      "value": 0.3,
+      "unit": "per week",
+      "band": "medium"
+    },
+    "leadTimeForChanges": {
+      "value": 0,
+      "unit": "hours",
+      "band": "elite"
+    },
+    "changeFailureRate": {
+      "value": 0,
+      "unit": "%",
+      "band": "elite"
+    },
+    "timeToRestore": {
+      "value": 0,
+      "unit": "hours",
+      "band": "elite"
+    }
+  },
+  "deployments": {
+    "total": 4,
+    "successful": 4,
+    "failed": 0,
+    "byEnvironment": {
+      "dev": 7,
+      "qa": 3,
+      "production": 4
+    }
+  }
+}
